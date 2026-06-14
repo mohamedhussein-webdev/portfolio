@@ -1,70 +1,349 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Hussein Portfolio</title>
+<title>Mohamed Hussein | Software Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#f4f4f4;
+*{
 margin:0;
 padding:0;
-text-align:center;
+box-sizing:border-box;
+font-family:'Inter', sans-serif;
+scroll-behavior:smooth;
 }
-header{
-background:#222;
+
+body{
+background:#0b1220;
 color:white;
-padding:30px;
+overflow-x:hidden;
 }
-section{
-background:white;
-margin:20px;
+
+/* ===== LOADER ===== */
+#loader{
+position:fixed;
+inset:0;
+background:#0b1220;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.loader-circle{
+width:60px;
+height:60px;
+border:4px solid #1f2a44;
+border-top:4px solid #3b82f6;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* ===== NAVBAR ===== */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 50px;
+background:rgba(11,18,32,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #1f2a44;
+z-index:1000;
+}
+
+nav .logo{
+font-weight:700;
+color:#3b82f6;
+}
+
+nav a{
+color:#cbd5e1;
+text-decoration:none;
+margin:0 12px;
+transition:0.3s;
+font-size:14px;
+}
+
+nav a:hover{
+color:#3b82f6;
+}
+
+/* ===== HERO ===== */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
 padding:20px;
-border-radius:10px;
+background:radial-gradient(circle at top,#13203a,#0b1220);
 }
-h2{
-color:#333;
+
+.hero h1{
+font-size:52px;
+font-weight:700;
 }
+
+.hero h1 span{
+color:#3b82f6;
+}
+
+.hero p{
+color:#94a3b8;
+margin-top:10px;
+max-width:600px;
+}
+
+.buttons{
+margin-top:20px;
+display:flex;
+gap:10px;
+}
+
+.btn{
+padding:12px 20px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+text-decoration:none;
+display:inline-block;
+}
+
+.btn-primary{
+background:#3b82f6;
+color:white;
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+background:#2563eb;
+}
+
+.btn-outline{
+border:1px solid #3b82f6;
+color:#3b82f6;
+}
+
+.btn-outline:hover{
+background:#3b82f6;
+color:white;
+}
+
+/* ===== SECTIONS ===== */
+section{
+padding:90px 15%;
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:25px;
+color:#3b82f6;
+}
+
+/* ===== ABOUT ===== */
+.about p{
+color:#cbd5e1;
+line-height:1.8;
+}
+
+/* ===== SKILLS ===== */
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.skill{
+background:#111c33;
+padding:10px 14px;
+border-radius:8px;
+font-size:13px;
+border:1px solid #1f2a44;
+}
+
+/* ===== PROJECTS ===== */
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.project-card{
+background:#111c33;
+padding:20px;
+border-radius:12px;
+border:1px solid #1f2a44;
+transition:0.3s;
+}
+
+.project-card:hover{
+transform:translateY(-8px);
+border-color:#3b82f6;
+}
+
+.project-card h3{
+color:white;
+margin-bottom:10px;
+}
+
+.project-card p{
+color:#94a3b8;
+font-size:14px;
+}
+
+/* ===== CONTACT ===== */
+.contact-box{
+background:#111c33;
+padding:25px;
+border-radius:12px;
+border:1px solid #1f2a44;
+}
+
+.contact-box p{
+margin:10px 0;
+color:#cbd5e1;
+}
+
+/* FLOAT BUTTON */
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25D366;
+color:white;
+padding:14px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+box-shadow:0 0 15px rgba(37,211,102,0.4);
+}
+
 </style>
 </head>
+
 <body>
 
-<header>
-<h1>Mohamed Hussein</h1>
-<p>Web & Android Developer</p>
-</header>
+<!-- LOADER -->
+<div id="loader">
+<div class="loader-circle"></div>
+</div>
 
-<section>
-<h2>About Me</h2>
+<!-- NAV -->
+<nav>
+<div class="logo">Eng.Mohamed</div>
+<div>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+<h1>Hi, I'm <span>Mohamed Hussein</span></h1>
+<p>I develop websites and Android application using Python, HTML and JavaScript.</p>
+
+<div class="buttons">
+<a class="btn btn-primary" href="#projects">View Projects</a>
+<a class="btn btn-outline" href="https://wa.me/201225579308">Hire Me</a>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+<h2 class="section-title">About Me</h2>
 <p>
-I develop websites and Android applications using Python,
-HTML, CSS, JavaScript, Java and C++.
+I am a Front-End Web Developer focused on creating clean, modern and scalable web interfaces.
+I work with HTML, Python and JavaScript and I care about performance, responsiveness and UI quality.
 </p>
 </section>
 
+<!-- SKILLS -->
 <section>
-<h2>Skills</h2>
-<p>
-Python - HTML - CSS - JavaScript - Java - Android - C++
-</p>
+<h2 class="section-title">Skills</h2>
+<div class="skills">
+<div class="skill">HTML</div>
+<div class="skill">python</div>
+</div>
 </section>
 
-<section>
-<h2>Projects</h2>
-<p> Website Projects</p>
-<p> Android Application</p>
+<!-- PROJECTS -->
+<section id="projects">
+<h2 class="section-title">Projects</h2>
+
+<div class="projects">
+
+<div class="project-card">
+<h3>Web Project 01</h3>
+<p>Modern responsive website built using HTML, JS.</p>
+</div>
+
+<div class="project-card">
+<h3>Web Project 02</h3>
+<p>Landing page optimized for performance and UX.</p>
+</div>
+
+<div class="project-card">
+<h3>Android App</h3>
+<p>Mobile application built for Android platform.</p>
+</div>
+
+</div>
 </section>
 
-<section>
-<h2>Contact</h2>
-<p>WhatsApp/Phone: 01225579308/01097127891</p>
+<!-- CONTACT -->
+<section id="contact">
+<h2 class="section-title">Contact</h2>
+
+<div class="contact-box">
+<p>📞 01225579308</p>
+</div>
 </section>
 
-<section>
-<h2>Mail</h2>
-<p>Email: mohamedhus9500@gmail.com</p>
-</section>
-  
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/201225579308">💬</a>
+
+<script>
+// LOADER
+window.onload = () => {
+document.getElementById("loader").style.display = "none";
+};
+
+// SCROLL ANIMATION (PRO LEVEL)
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll("section").forEach(sec => {
+observer.observe(sec);
+});
+</script>
+
 </body>
-</html>
+  </html>
