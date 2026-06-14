@@ -239,6 +239,22 @@ text-decoration:none;
 box-shadow:0 0 15px rgba(37,211,102,0.4);
 }
 
+  .profile-img{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #3b82f6;
+    margin-bottom:30px;
+    box-shadow:0 0 30px rgba(59,130,246,0.6);
+    transition:0.4s;
+}
+
+.profile-img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 40px rgba(59,130,246,0.9);
+}
+  
 </style>
 </head>
 
@@ -260,6 +276,9 @@ box-shadow:0 0 15px rgba(37,211,102,0.4);
 
 <!-- HERO -->
 <section id="home" class="hero">
+  
+<img src="mohamed-circle.png" alt="Mohamed Hussein" class="profile-img">
+  
 <h1>Hi, I'm <span>Mohamed Hussein</span></h1>
 <p>I develop websites and Android application using Python, HTML and JavaScript.</p>
 
